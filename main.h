@@ -9,7 +9,8 @@ void	_putchar(char c);
 int	_printf(const char* format, ...);
 void	_printint(int n);
 void	_printstring(char* str);
-void _print_hex(int n);
-void _print_float(float f);
+void	_print_hex(int n);
+void	_print_octal(int n);
+void	_print_float(float f);
 
 #endif

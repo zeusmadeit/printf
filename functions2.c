@@ -73,3 +73,33 @@ int _print_exclusive_string(va_list args)
 	}
 	return (len);
 }
+
+/**
+ * _printf_pointer - prints an hexgecimal number.
+ * @val: arguments.
+ * Return: counter.
+ */
+int _printf_pointer(va_list args)
+{
+	void *p;
+	char *s = "(nil)";
+	long int a;
+	int b;
+	int i;
+
+	p = va_arg(args, void*);
+	if (p == NULL)
+	{
+		for (i = 0; s[i] != '\0'; i++)
+		{
+			_putchar(s[i]);
+		}
+		return (i);
+	}
+
+	a = (unsigned long int)p;
+	_putchar('0');
+	_putchar('x');
+	b = _print_unsigned(a, 16, 0);
+	return (b + 2);
+}

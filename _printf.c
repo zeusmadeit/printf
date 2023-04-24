@@ -71,6 +71,12 @@ int	_printf(const char *format, ...)
 						break;
 					}
 
+				case 'p':
+					{
+						written += (unsigned int) _printf_pointer(args);
+						break;
+					}
+
 				case 's':
 					{
 						char *str = va_arg(args, char *);

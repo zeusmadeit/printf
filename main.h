@@ -15,6 +15,8 @@ int	_reverse(char *str, int len);
 int	_itoa(int num, char *str);
 int	_print_float(double value, int precision);
 */
+int	_printf_rot13(va_list args);
+int	_printf_srev(va_list args);
 int	_print_signed(int num, int base);
 int	_print_unsigned(unsigned int num, int base, int uppercase);
 int	_printf(const char *format, ...);

@@ -80,6 +80,18 @@ int	_printf(const char *format, ...)
 						break;
 					}
 
+				case 'r':
+					{
+						written += (unsigned int) _printf_srev(args);
+						break;
+					}
+
+				case 'R':
+					{
+						written += (unsigned int) _printf_rot13(args);
+						break;
+					}
+
 				default:
 					{
 						write(1, format-1, 2);

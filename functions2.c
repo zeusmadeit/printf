@@ -35,3 +35,33 @@ int _printf_rot13(va_list args)
 	}
 	return (counter);
 }
+
+/**
+* _non_printable_char - prints Non printable characters (0 < ASCII value < 32 or >= 127)
+* are printed this way: \x, followed by the ASCII code value in
+* hexadecimal (upper case - always 2 characters)
+*/
+int _non_printable_char(va_list args)
+{
+	int i = 0, count = 0, num;
+	char *s = va_arg(args, char*);
+
+	if (s == NULL)
+		s = "(null)";
+	while (s[i] != '\0')
+	{
+		if (s[i] < 32 || s[i] >= 127)
+		{
+			count += _putchar('\\');
+			count += _putchar('x');
+			num = (int) s[i];
+			count += _print_unsigned(num, 16, 1);
+		}
+		else
+		{
+			count += _putchar(s[i]);
+		}
+	}
+	return (count);
+}
+

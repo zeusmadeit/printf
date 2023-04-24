@@ -14,7 +14,7 @@ int	_printstring(char *str)
 int _print_integer(int value, int base, int uppercase) 
 {
 	char buffer[32];
-	int idx = 0, len = 0;
+	int idx = 0, i, len = 0;
 	if (value < 0) {
 		len += _putchar('-');
 		value = -value;
@@ -26,7 +26,7 @@ int _print_integer(int value, int base, int uppercase)
 		value /= base;
 	} while (value != 0);
 
-	for (int i = idx - 1; i >= 0; i--) {
+	for (i = idx - 1; i >= 0; i--) {
 		len += _putchar(buffer[i]);
 	}
 	return (len);

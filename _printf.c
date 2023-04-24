@@ -12,17 +12,18 @@ int	_printf(const char *format, ...)
 {
 	int written;
 	va_list args;
+	int short_flag;
+	int long_flag;
 
 	va_start(args, format);
 	written = 0;
+	short_flag = 0;
+	long_flag = 0;
 	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
 			++format;
-			int long_flag = 0;
-			int short_flag = 0;
-
 			if (*format == 'l')
 			{
 				long_flag = 1;
@@ -40,7 +41,7 @@ int	_printf(const char *format, ...)
 				case 'i':
 					{
 						int value = (long_flag ? va_arg(args, long) : (short_flag ? (short)va_arg(args, int) : va_arg(args, int)));
-						written += print_integer(value, 10, 0);
+						written += _print_integer(value, 10, 0);
 						break;
 					}
 
@@ -53,7 +54,7 @@ int	_printf(const char *format, ...)
 						int base = (*format == 'o') ? 8 : ((*format == 'x' || *format == 'X') ? 16 : ((*format == 'b') ? 2 : 10));
 						int uppercase = (*format == 'X') ? 1 : 0;
 						unsigned int value = (long_flag ? va_arg(args, unsigned long) : (short_flag ? (unsigned short)va_arg(args, unsigned int) : va_arg(args, unsigned int)));
-						written += print_integer(value, base, uppercase);
+						written += _print_integer(value, base, uppercase);
 						break;
 					}
 

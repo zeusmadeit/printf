@@ -77,6 +77,12 @@ int value = (long_flag ? va_arg(args, long) : (short_flag ? (short)va_arg(args, 
 						break;
 					}
 
+				case 'p':
+					{
+						written += (unsigned int) _printf_pointer(args);
+						break;
+					}
+
 				case 's':
 					{
 						char *str = va_arg(args, char *);
@@ -84,6 +90,12 @@ int value = (long_flag ? va_arg(args, long) : (short_flag ? (short)va_arg(args, 
 							str = "(null)";
 
 						written += (unsigned int) _printstring(str);
+						break;
+					}
+
+				case 'S':
+					{
+						written += (unsigned int) _print_exclusive_string(args);
 						break;
 					}
 

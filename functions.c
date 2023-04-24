@@ -32,4 +32,32 @@ int _print_integer(int value, int base, int uppercase)
 	return (len);
 }
 
+int _print_unsigned(unsigned int num, int base, int uppercase)
+{
+	char *digits;
+	char buf[32];
+	int i = 0, j, len = 0;
 
+	digits = uppercase ? "0123456789ABCDEF" : "0123456789abcdef";
+	do {
+		buf[i++] = digits[num % base];
+		num /= base;
+	} while (num != 0);
+
+	for (j = i - 1; j >= 0; j--) {
+		len += _putchar(buf[j]);
+	}
+	return (len);
+}
+
+int _print_signed(int num, int base)
+{
+	int len = 0;
+
+	if (num < 0) {
+		len += _putchar('-');
+		num = -num;
+	}
+	_print_unsigned(num, base, 0);
+	return (len);
+}

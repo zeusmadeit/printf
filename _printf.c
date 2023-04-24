@@ -54,7 +54,7 @@ int	_printf(const char *format, ...)
 						int base = (*format == 'o') ? 8 : ((*format == 'x' || *format == 'X') ? 16 : ((*format == 'b') ? 2 : 10));
 						int uppercase = (*format == 'X') ? 1 : 0;
 						unsigned int value = (long_flag ? va_arg(args, unsigned long) : (short_flag ? (unsigned short)va_arg(args, unsigned int) : va_arg(args, unsigned int)));
-						written += (unsigned int) _print_integer(value, base, uppercase);
+						written += (unsigned int) _print_unsigned(value, base, uppercase);
 						break;
 					}
 

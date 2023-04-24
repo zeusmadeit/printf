@@ -27,8 +27,9 @@ int _print_integer(int value, int base, int uppercase)
 	} while (value != 0);
 
 	for (int i = idx - 1; i >= 0; i--) {
-		len += putchar(buffer[i]);
+		len += _putchar(buffer[i]);
 	}
 	return (len);
 }
+
 

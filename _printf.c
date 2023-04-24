@@ -66,44 +66,21 @@ int	_printf(const char *format, ...)
 
 				case '%':
 					{
-						char c = (char) va_arg(args, int);
-						written += _putchar(c);
+						written += _putchar(37);
 						break;
 					}
 
 				case 's':
 					{
-						const char *str = va_arg(args, const char *);
+						char *str = va_arg(args, char *);
 						if (str == NULL)
 							str = "(null)";
 						written += _printstring(str);
 						break;
 					}
 
-				case 'e':
-				case 'f':
-				case 'F':
-					{
-						double value = va_arg(args, double);
-						int precision = 6;
-						if (*(format+1) >= '0' && *(format+1) <= '9')
-						{
-							++format;
-							precision = 0;
-							while (*format >= '0' && *format <= '9')
-							{
-								precision = precision * 10 + (*format - '0');
-								++format;
-							}
-							--format;
-						}
-						written += _print_float(value, precision);
-						break;
-					}
-
 				default:
 					{
-						// unsupported format specifier
 						write(1, format-1, 2);
 						written += 2;
 						break;
@@ -116,7 +93,6 @@ int	_printf(const char *format, ...)
 		}
 		format++;
 	}
-	// 
 	va_end(args);
 	return (written);
 }

@@ -80,6 +80,12 @@ int	_printf(const char *format, ...)
 						break;
 					}
 
+				case 'S':
+					{
+						written += (unsigned int) _print_exclusive_string(args);
+						break;
+					}
+
 				case 'r':
 					{
 						written += (unsigned int) _printf_srev(args);

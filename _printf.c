@@ -41,7 +41,7 @@ int	_printf(const char *format, ...)
 				case 'i':
 					{
 						int value = (long_flag ? va_arg(args, long) : (short_flag ? (short)va_arg(args, int) : va_arg(args, int)));
-						written += _print_integer(value, 10, 0);
+						written += (unsigned int) _print_integer(value, 10, 0);
 						break;
 					}
 
@@ -54,20 +54,20 @@ int	_printf(const char *format, ...)
 						int base = (*format == 'o') ? 8 : ((*format == 'x' || *format == 'X') ? 16 : ((*format == 'b') ? 2 : 10));
 						int uppercase = (*format == 'X') ? 1 : 0;
 						unsigned int value = (long_flag ? va_arg(args, unsigned long) : (short_flag ? (unsigned short)va_arg(args, unsigned int) : va_arg(args, unsigned int)));
-						written += _print_integer(value, base, uppercase);
+						written += (unsigned int) _print_integer(value, base, uppercase);
 						break;
 					}
 
 				case 'c':
 					{
 						char c = (char) va_arg(args, int);
-						written += _putchar(c);
+						written += (unsigned int) _putchar(c);
 						break;
 					}
 
 				case '%':
 					{
-						written += _putchar(37);
+						written += (unsigned int) _putchar(37);
 						break;
 					}
 
@@ -76,7 +76,7 @@ int	_printf(const char *format, ...)
 						char *str = va_arg(args, char *);
 						if (str == NULL)
 							str = "(null)";
-						written += _printstring(str);
+						written += (unsigned int) _printstring(str);
 						break;
 					}
 
@@ -90,7 +90,7 @@ int	_printf(const char *format, ...)
 		}
 		else
 		{
-			written += -_putchar(*format);
+			written += (unsigned int) _putchar(*format);
 		}
 		format++;
 	}

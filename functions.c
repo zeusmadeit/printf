@@ -7,7 +7,7 @@
  * Return: 0
  */
 
-int _printstring(char *str)
+int	_printstring(char *str)
 {
 	int len = 0;
 
@@ -26,28 +26,25 @@ int _printstring(char *str)
  * Return: 0
  */
 
-int _print_integer(int value, int base, int uppercase)
+int _print_integer(int value, int base, int uppercase) 
 {
 	char buffer[32];
-	int idx = 0, i, len = 0;
-
-	if (value < 0}
-	{
+	int idx = 0, len = 0, i;
+	if (value < 0) {
 		len += _putchar('-');
 		value = -value;
 	}
 
 	do {
 		int digit = value % base;
-
 		buffer[idx++] = digit < 10 ? digit + '0' : (uppercase ? 'A' : 'a') + digit - 10;
 		value /= base;
 	} while (value != 0);
 
-	for (i = idx - 1; i >= 0; i--)
-	{
+	for (i = idx - 1; i >= 0; i--) {
 		len += _putchar(buffer[i]);
 	}
+
 	return (len);
 }
 
@@ -72,8 +69,7 @@ int _print_unsigned(unsigned int num, int base, int uppercase)
 		num /= base;
 	} while (num != 0);
 
-	for (j = i - 1; j >= 0; j--)
-	{
+	for (j = i - 1; j >= 0; j--) {
 		len += _putchar(buf[j]);
 	}
 	return (len);
@@ -90,17 +86,16 @@ int _print_signed(int num, int base)
 {
 	int len = 0;
 
-	if (num < 0)
-	{
+	if (num < 0) {
 		len += _putchar('-');
 		num = -num;
 	}
-	_print_unsigned_int(num, base, 0);
+	_print_unsigned(num, base, 0);
 	return (len);
 }
 
 /**
- * _printf_srev - function that prints a str in reverse
+ * printf_srev - function that prints a str in reverse
  * @args: type struct va_arg where is allocated printf arguments
  *
  * Return: the string
@@ -114,6 +109,7 @@ int _printf_srev(va_list args)
 	if (s == NULL)
 	{
 		s = "(null)";
+		return (0);
 	}
 	while (s[j] != '\0')
 		j++;
@@ -121,3 +117,4 @@ int _printf_srev(va_list args)
 		_putchar(s[i]);
 	return (j);
 }
+
